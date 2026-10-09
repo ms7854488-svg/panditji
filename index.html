@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PanditJi.com - Authentic Vedic Pujas & Pandit Booking</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts: Outfits & Rozha One for Indian Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Cinzel:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        saffron: {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            700: '#b45309',
+                            800: '#92400e',
+                        },
+                        maroon: {
+                            800: '#5c0f1c',
+                            900: '#3d0811',
+                            950: '#26040a',
+                        },
+                        gold: {
+                            300: '#fde047',
+                            400: '#facc15',
+                            500: '#eab308',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        heading: ['Cinzel', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .sacred-gradient {
+            background: linear-gradient(135deg, #3d0811 0%, #7c1224 50%, #b45309 100%);
+        }
+        .gold-border-glow {
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.25);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+        }
+        /* Hide scrollbar for category tabs */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-amber-50/40 text-gray-800 font-sans antialiased selection:bg-saffron-500 selection:text-white">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-maroon-900 text-amber-200 text-xs sm:text-sm py-2 px-4 text-center flex justify-between items-center border-b border-amber-500/20">
+        <div class="container mx-auto flex justify-between items-center">
+            <span class="truncate"><i class="fa-solid fa-om text-saffron-500 mr-2"></i> Book Online E-Pujas with Live Sankalp for Devotees Worldwide (NRIs Welcome)</span>
+            <div class="hidden md:flex items-center space-x-6 text-xs">
+                <span><i class="fa-solid fa-phone mr-1 text-saffron-500"></i> +91 98765 43210</span>
+                <span><i class="fa-solid fa-shield-halved mr-1 text-saffron-500"></i> 100% Certified Gurukul Pandits</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-sm border-b border-amber-100">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center space-x-3 group">
+                    <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-saffron-600 to-amber-400 flex items-center justify-center text-white text-xl font-bold shadow-md transform group-hover:rotate-12 transition duration-300">
+                        <i class="fa-solid fa-fire-flame-curved"></i>
+                    </div>
+                    <div>
+                        <span class="font-heading text-2xl font-extrabold tracking-tight text-maroon-900 block leading-tight">Pandit<span class="text-saffron-600">Ji</span><span class="text-xs text-amber-600 font-semibold align-super">.com</span></span>
+                        <span class="text-[10px] tracking-widest uppercase text-gray-500 font-medium block">Vedic Rituals & Pujas</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <nav class="hidden lg:flex items-center space-x-8 font-medium text-sm text-gray-700">
+                    <a href="#home" class="hover:text-saffron-600 transition">Home</a>
+                    <a href="#pujas" class="hover:text-saffron-600 transition">Pujas & Rituals</a>
+                    <a href="#muhurat" class="hover:text-saffron-600 transition">Muhurat Finder</a>
+                    <a href="#pandits" class="hover:text-saffron-600 transition">Verified Pandits</a>
+                    <a href="#epuja" class="hover:text-saffron-600 transition">E-Puja (Virtual)</a>
+                    <a href="#faqs" class="hover:text-saffron-600 transition">FAQs</a>
+                </nav>
+
+                <!-- Action Buttons & Language -->
+                <div class="hidden sm:flex items-center space-x-4">
+                    <div class="relative inline-block text-left">
+                        <select id="langSelect" onchange="changeLanguage(this.value)" class="bg-amber-50 border border-amber-200 text-gray-700 text-xs rounded-lg focus:ring-saffron-500 focus:border-saffron-500 p-2 font-medium cursor-pointer">
+                            <option value="en">English (EN)</option>
+                            <option value="hi">हिंदी (HI)</option>
+                            <option value="sa">संस्कृतम् (SA)</option>
+                        </select>
+                    </div>
+                    <button onclick="openBookingModal()" class="bg-gradient-to-r from-saffron-600 to-amber-500 hover:from-saffron-700 hover:to-amber-600 text-white font-semibold text-sm px-5 py-2.5 rounded-full shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 flex items-center space-x-2">
+                        <i class="fa-solid fa-calendar-check"></i>
+                        <span>Book A Pandit</span>
+                    </button>
+                </div>
+
+                <!-- Mobile Hamburger Button -->
+                <button onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-md text-gray-700 hover:bg-amber-50 focus:outline-none">
+                    <i class="fa-solid fa-bars text-xl" id="menuIcon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-amber-100 px-4 pt-2 pb-6 space-y-3">
+            <a href="#home" onclick="toggleMobileMenu()" class="block py-2 text-gray-700 hover:text-saffron-600 font-medium">Home</a>
+            <a href="#pujas" onclick="toggleMobileMenu()" class="block py-2 text-gray-700 hover:text-saffron-600 font-medium">Pujas & Rituals</a>
+            <a href="#muhurat" onclick="toggleMobileMenu()" class="block py-2 text-gray-700 hover:text-saffron-600 font-medium">Muhurat Finder</a>
+            <a href="#pandits" onclick="toggleMobileMenu()" class="block py-2 text-gray-700 hover:text-saffron-600 font-medium">Verified Pandits</a>
+            <a href="#epuja" onclick="toggleMobileMenu()" class="block py-2 text-gray-700 hover:text-saffron-600 font-medium">E-Puja (Virtual)</a>
+            <a href="#faqs" onclick="toggleMobileMenu()" class="block py-2 text-gray-700 hover:text-saffron-600 font-medium">FAQs</a>
+            <div class="pt-4 border-t border-amber-100 flex flex-col gap-3">
+                <button onclick="openBookingModal(); toggleMobileMenu();" class="w-full bg-saffron-600 text-white font-semibold py-2.5 rounded-full shadow text-center">
+                    Book A Pandit
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative sacred-gradient text-white py-16 lg:py-24 overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-3xl mx-auto text-center space-y-6">
+                <div class="inline-flex items-center space-x-2 bg-amber-400/20 text-amber-200 border border-amber-300/30 px-4 py-1.5 rounded-full text-xs font-semibold backdrop-blur-md">
+                    <i class="fa-solid fa-certificate text-saffron-500"></i>
+                    <span>100% Verified Vedic Pandits & Authentic Samagri</span>
+                </div>
+                
+                <h1 class="font-heading text-3xl sm:text-5xl lg:text-6xl font-extrabold text-amber-100 leading-tight">
+                    Authentic Vedic Pujas At Your Doorstep & Online
+                </h1>
+                
+                <p class="text-base sm:text-lg text-amber-100/90 max-w-2xl mx-auto font-light leading-relaxed">
+                    Experience divine blessings with experienced, Gurukul-certified Pandits for Griha Pravesh, Havan, Dosha Nivaran, and Samskara Pujas across India and Worldwide.
+                </p>
+
+                <!-- Search / Quick Booking Bar -->
+                <div class="bg-white p-3 sm:p-4 rounded-2xl shadow-2xl text-gray-800 max-w-2xl mx-auto mt-8 border-2 border-gold-400">
+                    <form onsubmit="handleQuickSearch(event)" class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <div>
+                            <label class="block text-left text-xs font-semibold text-gray-500 mb-1 pl-1">Select Puja</label>
+                            <select id="heroSearchPuja" class="w-full bg-amber-50/60 border border-amber-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-saffron-500">
+                                <option value="all">All Rituals</option>
+                                <option value="griha">Griha Pravesh & Vastu</option>
+                                <option value="satyanarayan">Satyanarayan Katha</option>
+                                <option value="havan">Maha Mrityunjaya Jaap</option>
+                                <option value="dosha">Kalsarp Dosh Nivaran</option>
+                                <option value="rudra">Rudrabhishekam</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-left text-xs font-semibold text-gray-500 mb-1 pl-1">City / Location</label>
+                            <select id="heroSearchCity" class="w-full bg-amber-50/60 border border-amber-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-saffron-500">
+                                <option value="delhi">Delhi NCR</option>
+                                <option value="mumbai">Mumbai / Thane</option>
+                                <option value="bangalore">Bengaluru</option>
+                                <option value="pune">Pune</option>
+                                <option value="hyderabad">Hyderabad</option>
+                                <option value="online">Online / E-Puja Global</option>
+                            </select>
+                        </div>
+                        <div class="flex items-end">
+                            <button type="submit" class="w-full bg-saffron-600 hover:bg-saffron-700 text-white font-bold py-2.5 px-4 rounded-xl shadow-md transition flex items-center justify-center space-x-2 text-sm">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <span>Find Pandit</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Trust Badges -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-8 text-center text-xs text-amber-200/90 font-medium">
+                    <div class="flex flex-col items-center p-2 rounded-xl bg-white/5 border border-white/10">
+                        <i class="fa-solid fa-user-shield text-2xl text-saffron-500 mb-1"></i>
+                        <span>Gurukul Certified</span>
+                    </div>
+                    <div class="flex flex-col items-center p-2 rounded-xl bg-white/5 border border-white/10">
+                        <i class="fa-solid fa-box-open text-2xl text-saffron-500 mb-1"></i>
+                        <span>Pavitra Samagri Option</span>
+                    </div>
+                    <div class="flex flex-col items-center p-2 rounded-xl bg-white/5 border border-white/10">
+                        <i class="fa-solid fa-hand-holding-dollar text-2xl text-saffron-500 mb-1"></i>
+                        <span>Transparent Pricing</span>
+                    </div>
+                    <div class="flex flex-col items-center p-2 rounded-xl bg-white/5 border border-white/10">
+                        <i class="fa-solid fa-heart text-2xl text-saffron-500 mb-1"></i>
+                        <span>50,000+ Happy Families</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Puja Catalog Section -->
+    <section id="pujas" class="py-16 container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-10 space-y-2">
+            <span class="text-saffron-600 font-bold uppercase tracking-wider text-xs">Vedic Services</span>
+            <h2 class="font-heading text-3xl sm:text-4xl font-bold text-maroon-900">Explore Sacred Pujas & Rituals</h2>
+            <p class="text-gray-600 text-sm">Select a Puja category to view authentic rituals, transparent packages, and required Vidhis.</p>
+        </div>
+
+        <!-- Filter Category Buttons -->
+        <div class="flex overflow-x-auto space-x-2 pb-4 mb-8 no-scrollbar justify-start md:justify-center border-b border-amber-200/60">
+            <button onclick="filterPujas('all')" class="cat-btn active px-5 py-2.5 rounded-full text-xs font-semibold whitespace-nowrap transition bg-saffron-600 text-white shadow-md">All Pujas</button>
+            <button onclick="filterPujas('griha')" class="cat-btn px-5 py-2.5 rounded-full text-xs font-semibold whitespace-nowrap transition bg-amber-100 text-gray-700 hover:bg-amber-200">Griha Pravesh & Vastu</button>
+            <button onclick="filterPujas('havan')" class="cat-btn px-5 py-2.5 rounded-full text-xs font-semibold whitespace-nowrap transition bg-amber-100 text-gray-700 hover:bg-amber-200">Havan & Jaap</button>
+            <button onclick="filterPujas('dosha')" class="cat-btn px-5 py-2.5 rounded-full text-xs font-semibold whitespace-nowrap transition bg-amber-100 text-gray-700 hover:bg-amber-200">Dosha Nivaran</button>
+            <button onclick="filterPujas('wedding')" class="cat-btn px-5 py-2.5 rounded-full text-xs font-semibold whitespace-nowrap transition bg-amber-100 text-gray-700 hover:bg-amber-200">Wedding & Samskara</button>
+            <button onclick="filterPujas('daily')" class="cat-btn px-5 py-2.5 rounded-full text-xs font-semibold whitespace-nowrap transition bg-amber-100 text-gray-700 hover:bg-amber-200">Daily & Monthly</button>
+        </div>
+
+        <!-- Puja Cards Grid -->
+        <div id="pujaGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Dynamic JavaScript Content -->
+        </div>
+    </section>
+
+    <!-- Muhurat / Auspicious Date Finder Tool -->
+    <section id="muhurat" class="bg-gradient-to-br from-amber-100/80 via-amber-50 to-orange-100/60 py-16 border-y border-amber-200">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto bg-white rounded-3xl p-6 sm:p-10 shadow-xl border border-amber-200 relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 text-amber-100 opacity-40 pointer-events-none">
+                    <i class="fa-solid fa-sun text-[200px]"></i>
+                </div>
+
+                <div class="text-center space-y-2 mb-8">
+                    <span class="bg-saffron-100 text-saffron-700 font-bold px-3 py-1 rounded-full text-xs uppercase tracking-wider">Panchang Guided</span>
+                    <h2 class="font-heading text-2xl sm:text-3xl font-bold text-maroon-900">Auspicious Muhurat Finder</h2>
+                    <p class="text-gray-600 text-xs sm:text-sm">Find upcoming Shubha Tithis and Nakshatras calculated by senior Pandits.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-600 mb-1">Occasion / Ceremony</label>
+                        <select id="muhuratOccasion" onchange="calculateMuhurat()" class="w-full bg-amber-50/50 border border-amber-300 rounded-xl px-3 py-2.5 text-sm font-medium focus:ring-2 focus:ring-saffron-500">
+                            <option value="griha">Griha Pravesh (Housewarming)</option>
+                            <option value="vehicle">Vehicle / Car Puja</option>
+                            <option value="marriage">Vivah (Wedding)</option>
+                            <option value="namakaran">Namakaran (Naming Ceremony)</option>
+                            <option value="mundan">Mundan / Head Shaving</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-600 mb-1">Month</label>
+                        <select id="muhuratMonth" onchange="calculateMuhurat()" class="w-full bg-amber-50/50 border border-amber-300 rounded-xl px-3 py-2.5 text-sm font-medium focus:ring-2 focus:ring-saffron-500">
+                            <option value="current">Current Month</option>
+                            <option value="next">Next Month</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-600 mb-1">Location Region</label>
+                        <select id="muhuratRegion" onchange="calculateMuhurat()" class="w-full bg-amber-50/50 border border-amber-300 rounded-xl px-3 py-2.5 text-sm font-medium focus:ring-2 focus:ring-saffron-500">
+                            <option value="north">North India (IST)</option>
+                            <option value="south">South India (IST)</option>
+                            <option value="west">West India (IST)</option>
+                            <option value="nri">Global / USA / Europe</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Muhurat Output Display -->
+                <div id="muhuratResults" class="space-y-3 pt-2">
+                    <!-- Dynamic Muhurats Inserted Here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Verified Pandits Directory Section -->
+    <section id="pandits" class="py-16 container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-12 space-y-2">
+            <span class="text-saffron-600 font-bold uppercase tracking-wider text-xs">Veda Parangat</span>
+            <h2 class="font-heading text-3xl sm:text-4xl font-bold text-maroon-900">Our Verified Gurukul Pandits</h2>
+            <p class="text-gray-600 text-sm">Background-checked, highly experienced Vidwans trained in authentic Vedic Gurukuls.</p>
+        </div>
+
+        <div id="panditsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Dynamic Pandit Profiles Loaded Here -->
+        </div>
+    </section>
+
+    <!-- E-Puja & NRI Global Services Highlight -->
+    <section id="epuja" class="sacred-gradient text-white py-16 relative overflow-hidden">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                <div class="space-y-6">
+                    <div class="inline-flex items-center space-x-2 bg-amber-400/20 text-amber-200 border border-amber-300/30 px-3 py-1 rounded-full text-xs font-semibold">
+                        <i class="fa-solid fa-globe text-saffron-500"></i>
+                        <span>For NRIs & Remote Devotees</span>
+                    </div>
+                    <h2 class="font-heading text-3xl sm:text-4xl font-bold text-amber-100 leading-tight">
+                        Live Virtual E-Puja With Individual Name Sankalp
+                    </h2>
+                    <p class="text-amber-100/90 text-sm sm:text-base leading-relaxed">
+                        Can't perform Puja at home? Participate in live interactive streaming pujas performed at holy pilgrimage spots (Kashi, Haridwar, Ujjain, Trimbakeshwar) on your name and gotra.
+                    </p>
+                    
+                    <ul class="space-y-3 text-sm text-amber-100/90">
+                        <li class="flex items-center space-x-3">
+                            <i class="fa-solid fa-circle-check text-saffron-500 text-base"></i>
+                            <span>Personalized Live Video Call (Zoom / Google Meet)</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fa-solid fa-circle-check text-saffron-500 text-base"></i>
+                            <span>Sacred Prasad & Vibhuti delivered worldwide via express courier</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fa-solid fa-circle-check text-saffron-500 text-base"></i>
+                            <span>Complete Recording HD Video Access post Puja</span>
+                        </li>
+                    </ul>
+
+                    <div class="pt-2">
+                        <button onclick="openBookingModal('virtual')" class="bg-amber-400 hover:bg-amber-300 text-maroon-900 font-bold px-6 py-3 rounded-full shadow-lg transition transform hover:-translate-y-0.5 text-sm">
+                            Book Live E-Puja Now
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-3xl text-center space-y-4">
+                    <div class="aspect-video bg-maroon-950/80 rounded-2xl flex flex-col items-center justify-center relative overflow-hidden group border border-amber-400/30">
+                        <i class="fa-solid fa-play-circle text-5xl text-saffron-500 group-hover:scale-110 transition cursor-pointer"></i>
+                        <span class="text-xs text-amber-200 mt-2 font-medium">Click to Preview Live E-Puja Experience</span>
+                        <div class="absolute top-3 left-3 bg-red-600 text-white text-[10px] font-bold uppercase px-2 py-0.5 rounded-full flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 bg-white rounded-full animate-ping"></span> Live Stream
+                        </div>
+                    </div>
+                    <p class="text-xs text-amber-200/80 italic">Over 12,000+ NRIs from USA, UK, Canada, & UAE trust PanditJi.com for annual pujas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials & FAQs -->
+    <section id="faqs" class="py-16 bg-amber-50/50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Testimonials -->
+                <div class="space-y-6">
+                    <div>
+                        <span class="text-saffron-600 font-bold uppercase tracking-wider text-xs">Devotee Reviews</span>
+                        <h2 class="font-heading text-2xl sm:text-3xl font-bold text-maroon-900">What Devotees Say</h2>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-white p-5 rounded-2xl shadow-sm border border-amber-200">
+                            <div class="flex items-center space-x-1 text-amber-400 text-xs mb-2">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-gray-700 text-sm italic">"Panditji arrived right on time for our Griha Pravesh in Bangalore. He explained every ritual patiently to our children. Full samagri kit was neat and authentic."</p>
+                            <div class="mt-3 flex items-center space-x-3">
+                                <div class="w-8 h-8 rounded-full bg-saffron-100 text-saffron-700 font-bold flex items-center justify-center text-xs">R</div>
+                                <div>
+                                    <h4 class="text-xs font-bold text-gray-800">Rajesh & Preeti Iyer</h4>
+                                    <span class="text-[10px] text-gray-500">Bangalore • Griha Pravesh</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-5 rounded-2xl shadow-sm border border-amber-200">
+                            <div class="flex items-center space-x-1 text-amber-400 text-xs mb-2">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-gray-700 text-sm italic">"Booked E-Puja for Maha Mrityunjaya Jaap from London. The Live stream quality was excellent, and Prasad arrived in 4 days. Truly divine service!"</p>
+                            <div class="mt-3 flex items-center space-x-3">
+                                <div class="w-8 h-8 rounded-full bg-saffron-100 text-saffron-700 font-bold flex items-center justify-center text-xs">A</div>
+                                <div>
+                                    <h4 class="text-xs font-bold text-gray-800">Ananya Sharma</h4>
+                                    <span class="text-[10px] text-gray-500">London, UK • Virtual E-Puja</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQs Accordion -->
+                <div class="space-y-6">
+                    <div>
+                        <span class="text-saffron-600 font-bold uppercase tracking-wider text-xs">Got Questions?</span>
+                        <h2 class="font-heading text-2xl sm:text-3xl font-bold text-maroon-900">Frequently Asked Questions</h2>
+                    </div>
+
+                    <div id="faqAccordion" class="space-y-3">
+                        <!-- Dynamic FAQ Items -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Wizard Modal -->
+    <div id="bookingModal" class="fixed inset-0 z-50 hidden bg-maroon-950/70 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white rounded-3xl shadow-2xl max-w-2xl w-full border border-amber-200 overflow-hidden relative my-8">
+            <!-- Modal Header -->
+            <div class="bg-maroon-900 text-white p-6 flex justify-between items-center">
+                <div>
+                    <h3 class="font-heading text-xl font-bold text-amber-100" id="bookingModalTitle">Book A Pandit Service</h3>
+                    <p class="text-xs text-amber-200/80">Step-by-Step Vedic Booking Assistant</p>
+                </div>
+                <button onclick="closeBookingModal()" class="text-amber-200/80 hover:text-white p-2 rounded-full hover:bg-white/10 transition">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+
+            <!-- Wizard Progress Bar -->
+            <div class="bg-amber-50 px-6 py-3 border-b border-amber-200 flex justify-between text-xs font-semibold text-gray-600">
+                <span id="step1Indicator" class="text-saffron-600"><i class="fa-solid fa-circle-1 mr-1"></i> Package</span>
+                <span id="step2Indicator" class="text-gray-400"><i class="fa-solid fa-circle-2 mr-1"></i> Date & Location</span>
+                <span id="step3Indicator" class="text-gray-400"><i class="fa-solid fa-circle-3 mr-1"></i> Devotee Details</span>
+                <span id="step4Indicator" class="text-gray-400"><i class="fa-solid fa-circle-4 mr-1"></i> Confirmation</span>
+            </div>
+
+            <!-- Wizard Body -->
+            <form id="bookingForm" onsubmit="handleBookingSubmit(event)" class="p-6">
+                <!-- STEP 1: Puja & Package Selection -->
+                <div id="wizardStep1" class="wizard-step space-y-4">
+                    <label class="block text-sm font-bold text-gray-800">1. Choose Puja Ritual</label>
+                    <select id="bookPujaSelect" class="w-full bg-amber-50/50 border border-amber-300 rounded-xl p-3 text-sm focus:ring-2 focus:ring-saffron-500 font-medium">
+                        <option value="1">Griha Pravesh & Vastu Shanti (₹5,100 / $69)</option>
+                        <option value="2">Satyanarayan Katha & Puja (₹2,500 / $35)</option>
+                        <option value="3">Maha Mrityunjaya Jaap & Havan (₹11,000 / $149)</option>
+                        <option value="4">Rudrabhishekam Ritual (₹3,500 / $49)</option>
+                        <option value="5">Kalsarp Dosh Nivaran (₹7,500 / $99)</option>
+                        <option value="6">Vivah Sanskar (Wedding Rituals) (₹15,000 / $199)</option>
+                    </select>
+
+                    <label class="block text-sm font-bold text-gray-800 pt-2">2. Select Service Package</label>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <label class="border-2 border-saffron-500 bg-saffron-50/40 p-4 rounded-2xl cursor-pointer flex flex-col justify-between space-y-2">
+                            <div class="flex items-center justify-between">
+                                <span class="font-bold text-sm text-maroon-900">Pandit + Samagri Kit</span>
+                                <input type="radio" name="packageType" value="full" checked class="text-saffron-600 focus:ring-saffron-500">
+                            </div>
+                            <p class="text-xs text-gray-600">Includes Experienced Pandit + Complete 100% Pure Organic Puja Samagri Kit Delivered.</p>
+                            <span class="text-xs font-bold text-saffron-700">Recommended for Hassle-free Experience</span>
+                        </label>
+
+                        <label class="border border-amber-200 hover:border-saffron-400 p-4 rounded-2xl cursor-pointer flex flex-col justify-between space-y-2">
+                            <div class="flex items-center justify-between">
+                                <span class="font-bold text-sm text-gray-800">Pandit Only (Dakshina)</span>
+                                <input type="radio" name="packageType" value="pandit_only" class="text-saffron-600 focus:ring-saffron-500">
+                            </div>
+                            <p class="text-xs text-gray-600">Panditji performs Puja. You arrange Samagri checklist provided by us.</p>
+                            <span class="text-xs font-medium text-gray-500">Checklist PDF provided instantly</span>
+                        </label>
+                    </div>
+
+                    <div class="pt-4 flex justify-end">
+                        <button type="button" onclick="nextWizardStep(2)" class="bg-saffron-600 text-white font-bold px-6 py-2.5 rounded-full hover:bg-saffron-700 transition">Continue <i class="fa-solid fa-arrow-right ml-1"></i></button>
+                    </div>
+                </div>
+
+                <!-- STEP 2: Date, Time & Venue -->
+                <div id="wizardStep2" class="wizard-step hidden space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 mb-1">Preferred Date</label>
+                            <input type="date" required id="bookDate" class="w-full bg-amber-50/50 border border-amber-300 rounded-xl p-2.5 text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 mb-1">Preferred Time Slot</label>
+                            <select id="bookTime" class="w-full bg-amber-50/50 border border-amber-300 rounded-xl p-2.5 text-sm">
+                                <option>Early Morning (06:00 AM - 09:00 AM)</option>
+                                <option>Morning Muhurat (09:00 AM - 12:00 PM)</option>
+                                <option>Afternoon (12:00 PM - 04:00 PM)</option>
+                                <option>Evening (05:00 PM - 08:00 PM)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 mb-1">Ritual Location Type</label>
+                        <div class="grid grid-cols-2 gap-3">
+                            <button type="button" onclick="setVenueMode('home')" id="btnVenueHome" class="py-2.5 px-3 rounded-xl border-2 border-saffron-500 bg-amber-50 text-xs font-bold text-maroon-900 flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-house font-normal"></i> In-Person at Home
+                            </button>
+                            <button type="button" onclick="setVenueMode('online')" id="btnVenueOnline" class="py-2.5 px-3 rounded-xl border border-gray-300 text-xs font-bold text-gray-600 flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-video font-normal"></i> Virtual Live E-Puja
+                            </button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 mb-1">Full Address / City Details</label>
+                        <textarea id="bookAddress" rows="2" required placeholder="House No, Society / Area, City, Pincode" class="w-full bg-amber-50/50 border border-amber-300 rounded-xl p-2.5 text-sm"></textarea>
+                    </div>
+
+                    <div class="pt-4 flex justify-between">
+                        <button type="button" onclick="nextWizardStep(1)" class="text-gray-600 font-medium text-sm">Back</button>
+                        <button type="button" onclick="nextWizardStep(3)" class="bg-saffron-600 text-white font-bold px-6 py-2.5 rounded-full hover:bg-saffron-700 transition">Continue <i class="fa-solid fa-arrow-right ml-1"></i></button>
+                    </div>
+                </div>
+
+                <!-- STEP 3: Devotee Personal Information -->
+                <div id="wizardStep3" class="wizard-step hidden space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 mb-1">Full Name (Karta)</label>
+                            <input type="text" required id="devoteeName" placeholder="e.g. Ramesh Chandra" class="w-full bg-amber-50/50 border border-amber-300 rounded-xl p-2.5 text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 mb-1">Gotra (Optional)</label>
+                            <input type="text" id="devoteeGotra" placeholder="e.g. Kashyap / Bhardwaj / Don't Know" class="w-full bg-amber-50/50 border border-amber-300 rounded-xl p-2.5 text-sm">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 mb-1">WhatsApp Mobile Number</label>
+                            <input type="tel" required id="devoteePhone" placeholder="+91 9876543210" class="w-full bg-amber-50/50 border border-amber-300 rounded-xl p-2.5 text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 mb-1">Email Address</label>
+                            <input type="email" required id="devoteeEmail" placeholder="your@email.com" class="w-full bg-amber-50/50 border border-amber-300 rounded-xl p-2.5 text-sm">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 mb-1">Preferred Pandit Language</label>
+                        <select id="devoteeLanguage" class="w-full bg-amber-50/50 border border-amber-300 rounded-xl p-2.5 text-sm">
+                            <option>Hindi / Sanskrit</option>
+                            <option>Gujarati</option>
+                            <option>Marathi</option>
+                            <option>South Indian (Tamil/Telugu/Kannada)</option>
+                            <option>Bengali</option>
+                        </select>
+                    </div>
+
+                    <div class="pt-4 flex justify-between">
+                        <button type="button" onclick="nextWizardStep(2)" class="text-gray-600 font-medium text-sm">Back</button>
+                        <button type="submit" class="bg-saffron-600 text-white font-bold px-6 py-2.5 rounded-full hover:bg-saffron-700 transition">Confirm Booking <i class="fa-solid fa-check ml-1"></i></button>
+                    </div>
+                </div>
+
+                <!-- STEP 4: Invoice / Confirmation Screen -->
+                <div id="wizardStep4" class="wizard-step hidden space-y-4 text-center py-4">
+                    <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-3xl mx-auto shadow-inner">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                    <h4 class="font-heading text-2xl font-bold text-maroon-900">Booking Confirmed!</h4>
+                    <p class="text-xs text-gray-600 max-w-sm mx-auto">Har Har Mahadev! Your booking request has been registered with PanditJi.com.</p>
+
+                    <div class="bg-amber-50/80 p-4 rounded-2xl border border-amber-200 text-left text-xs space-y-2 max-w-md mx-auto">
+                        <div class="flex justify-between border-b border-amber-200/60 pb-1">
+                            <span class="text-gray-500">Booking Ref ID:</span>
+                            <span class="font-mono font-bold text-saffron-700" id="invRef">PJ-88492</span>
+                        </div>
+                        <div class="flex justify-between border-b border-amber-200/60 pb-1">
+                            <span class="text-gray-500">Selected Puja:</span>
+                            <span class="font-bold text-gray-800" id="invPuja">Griha Pravesh</span>
+                        </div>
+                        <div class="flex justify-between border-b border-amber-200/60 pb-1">
+                            <span class="text-gray-500">Scheduled Date:</span>
+                            <span class="font-bold text-gray-800" id="invDate">2026-10-25</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-500">Devotee Name:</span>
+                            <span class="font-bold text-gray-800" id="invName">Ramesh Chandra</span>
+                        </div>
+                    </div>
+
+                    <p class="text-[11px] text-gray-500">Our Pandit Coordinator will contact you on WhatsApp within 15 minutes to verify Vidhi specifics.</p>
+
+                    <div class="pt-2 flex gap-3 justify-center">
+                        <button type="button" onclick="closeBookingModal()" class="bg-gray-200 hover:bg-gray-300 text-gray-800 text-xs font-bold px-5 py-2.5 rounded-full transition">Done</button>
+                        <a id="whatappConfirmLink" target="_blank" href="#" class="bg-green-600 hover:bg-green-700 text-white text-xs font-bold px-5 py-2.5 rounded-full transition inline-flex items-center gap-1.5">
+                            <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp Support
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Puja Details Info Modal -->
+    <div id="detailsModal" class="fixed inset-0 z-50 hidden bg-maroon-950/70 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white rounded-3xl shadow-2xl max-w-lg w-full border border-amber-200 overflow-hidden relative my-8">
+            <div class="bg-amber-100 p-6 border-b border-amber-200 flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <span id="detailModalIcon" class="w-10 h-10 rounded-full bg-saffron-600 text-white flex items-center justify-center text-lg"><i class="fa-solid fa-om"></i></span>
+                    <div>
+                        <h3 id="detailModalTitle" class="font-heading text-lg font-bold text-maroon-900">Puja Title</h3>
+                        <span id="detailModalCategory" class="text-[10px] uppercase tracking-wider bg-saffron-200 text-saffron-800 px-2 py-0.5 rounded font-bold">Category</span>
+                    </div>
+                </div>
+                <button onclick="closeDetailsModal()" class="text-gray-500 hover:text-gray-800">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+
+            <div class="p-6 space-y-4 text-xs text-gray-700">
+                <div>
+                    <h4 class="font-bold text-sm text-maroon-900 mb-1"><i class="fa-solid fa-circle-info text-saffron-600 mr-1"></i> Purpose & Benefits</h4>
+                    <p id="detailModalDesc" class="leading-relaxed text-gray-600">Puja description goes here...</p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-sm text-maroon-900 mb-1"><i class="fa-solid fa-scroll text-saffron-600 mr-1"></i> Ritual Procedure (Vidhi)</h4>
+                    <p id="detailModalVidhi" class="leading-relaxed text-gray-600">Vidhi explanation...</p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-sm text-maroon-900 mb-1"><i class="fa-solid fa-box text-saffron-600 mr-1"></i> Samagri Checklist Highlights</h4>
+                    <ul id="detailModalSamagri" class="list-disc list-inside space-y-1 text-gray-600 pl-1">
+                        <!-- Items -->
+                    </ul>
+                </div>
+
+                <div class="pt-4 flex justify-between items-center border-t border-amber-100">
+                    <div>
+                        <span class="text-[10px] text-gray-500 block">Starting Dakshina</span>
+                        <span id="detailModalPrice" class="font-bold text-base text-saffron-700">₹5,100</span>
+                    </div>
+                    <button id="detailModalBookBtn" onclick="" class="bg-saffron-600 hover:bg-saffron-700 text-white font-bold px-5 py-2 rounded-full text-xs transition">
+                        Book This Puja
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-maroon-950 text-amber-100/80 pt-12 pb-8 border-t-4 border-saffron-500">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10 text-xs">
+                <!-- Col 1 -->
+                <div class="space-y-3">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 rounded-full bg-saffron-500 flex items-center justify-center text-white font-bold text-base">
+                            <i class="fa-solid fa-fire-flame-curved"></i>
+                        </div>
+                        <span class="font-heading text-xl font-bold text-amber-100">Pandit<span class="text-saffron-500">Ji</span>.com</span>
+                    </div>
+                    <p class="text-amber-100/70 leading-relaxed">
+                        India's premier digital platform connecting verified Vedic Gurukul Pandits with families worldwide for sacred pujas, hawans, and samskaras.
+                    </p>
+                </div>
+
+                <!-- Col 2 -->
+                <div>
+                    <h4 class="font-bold text-amber-200 text-sm mb-3">Popular Pujas</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#pujas" class="hover:text-amber-400">Griha Pravesh & Vastu Shanti</a></li>
+                        <li><a href="#pujas" class="hover:text-amber-400">Maha Mrityunjaya Havan</a></li>
+                        <li><a href="#pujas" class="hover:text-amber-400">Satyanarayan Vrat Katha</a></li>
+                        <li><a href="#pujas" class="hover:text-amber-400">Kalsarp Dosh Nivaran</a></li>
+                        <li><a href="#pujas" class="hover:text-amber-400">Rudrabhishekam Ritual</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3 -->
+                <div>
+                    <h4 class="font-bold text-amber-200 text-sm mb-3">Quick Tools</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#muhurat" class="hover:text-amber-400">Auspicious Date Finder</a></li>
+                        <li><a href="#epuja" class="hover:text-amber-400">Global NRI E-Puja</a></li>
+                        <li><a href="#pandits" class="hover:text-amber-400">Verified Pandits List</a></li>
+                        <li><a href="#faqs" class="hover:text-amber-400">Samagri Quality Assurance</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4 -->
+                <div>
+                    <h4 class="font-bold text-amber-200 text-sm mb-3">Devotee Support</h4>
+                    <p class="mb-2">Need advice on choosing the right Puja?</p>
+                    <p class="font-bold text-saffron-400 text-sm mb-3"><i class="fa-solid fa-phone mr-1"></i> +91 98765 43210</p>
+                    <p class="text-amber-100/60">Helpdesk: support@panditji.com</p>
+                </div>
+            </div>
+
+            <div class="pt-6 border-t border-amber-900/60 flex flex-col sm:flex-row justify-between items-center text-[11px] text-amber-200/50 space-y-3 sm:space-y-0">
+                <p>© 2026 PanditJi.com. All Rights Reserved. Devotion & Authenticity Guaranteed.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="hover:underline">Privacy Policy</a>
+                    <a href="#" class="hover:underline">Terms of Service</a>
+                    <a href="#" class="hover:underline">Pandit Registration</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp CTA Button -->
+    <a href="https://wa.me/919876543210?text=Namaste%20PanditJi.com,%20I%20want%20to%20book%20a%20Puja." target="_blank" class="fixed bottom-6 right-6 z-40 bg-green-500 hover:bg-green-600 text-white p-3.5 rounded-full shadow-2xl transition transform hover:scale-110 flex items-center space-x-2">
+        <i class="fa-brands fa-whatsapp text-2xl"></i>
+        <span class="text-xs font-bold hidden sm:inline-block pr-1">Book on WhatsApp</span>
+    </a>
+
+    <script>
+        const pujasData = [
+            {
+                id: 1,
+                title: "Griha Pravesh & Vastu Shanti",
+                category: "griha",
+                categoryLabel: "Griha Pravesh & Vastu",
+                price: 5100,
+                priceNri: 69,
+                duration: "3 - 4 Hours",
+                icon: "fa-house-chimney-window",
+                description: "Purify your new home from negative energies and invite Goddess Lakshmi & Vastu Purusha blessings before moving in.",
+                vidhi: "Includes Gauri Ganesh Pujan, Navagraha Havan, Vastu Pratishtha, Dwar Pujan, Milk Boiling ritual, and Kalash Yatra.",
+                samagri: ["100% Pure Cow Ghee", "Navagraha Wood Samagri", "Organic Kumkum & Haldi", "Vastu Yantra", "Havan Kund Accessories"]
+            },
+            {
+                id: 2,
+                title: "Satyanarayan Vrat Katha & Havan",
+                category: "daily",
+                categoryLabel: "Daily & Monthly",
+                price: 2500,
+                priceNri: 35,
+                duration: "2 Hours",
+                icon: "fa-book-open-reader",
+                description: "Brings prosperity, peace, and abundance to the household. Ideal for Purnima, birthdays, or special occasions.",
+                vidhi: "Sankalp, Gauri Ganesh Pujan, Recitation of 5 Adhyayas of Lord Satyanarayan, Panchamrit Abhishekam, and Aarti.",
+                samagri: ["Panjiri Prasad mix", "Tulsi Leaves & Tulsi Mala", "Fresh Flowers & Fruits", "Banana Plant Leaves", "Panchamrit items"]
+            },
+            {
+                id: 3,
+                title: "Maha Mrityunjaya Jaap & Havan",
+                category: "havan",
+                categoryLabel: "Havan & Jaap",
+                price: 11000,
+                priceNri: 149,
+                duration: "4 - 5 Hours",
+                icon: "fa-fire",
+                description: "Powerful Vedic Jaap for health longevity, protection from critical illnesses, and removing malefic planetary effects.",
+                vidhi: "11,000 or 21,000 Jaap chanting by 3 to 5 Vidwan Pandits, followed by Maha Mrityunjaya Havan & Ahuti.",
+                samagri: ["Special Medicinal Herbs", "Durva Grass & Bel Patra", "Til & Jau for Ahuti", "Pure Desi Ghee", "Copper Havan Kund"]
+            },
+            {
+                id: 4,
+                title: "Rudrabhishekam Puja",
+                category: "daily",
+                categoryLabel: "Daily & Monthly",
+                price: 3500,
+                priceNri: 49,
+                duration: "2.5 Hours",
+                icon: "fa-hands-holding-child",
+                description: "Sacred bathing ritual of Lord Shiva with 108 dravyas for inner peace, prosperity, and obstacle removal.",
+                vidhi: "Laghu Rudra Chanting, Panchamrit & Gangajal Abhishekam, Bilva Patra Archana, and Shiva Aarti.",
+                samagri: ["Pure Gangajal from Haridwar", "Panchamrit Ingredients", "Bhasma & Chandan Paste", "Fresh Bilva Patra", "Sugarcane Juice"]
+            },
+            {
+                id: 5,
+                title: "Kalsarp Dosh Nivaran Puja",
+                category: "dosha",
+                categoryLabel: "Dosha Nivaran",
+                price: 7500,
+                priceNri: 99,
+                duration: "3 Hours",
+                icon: "fa-shield-cat",
+                description: "Specialized ritual for eliminating hurdles in career, marriage, and personal life caused by Rahu-Ketu placement.",
+                vidhi: "Nag-Nagin Prathistha, Rahu-Ketu Jaap, Nag Bali Shanti Havan, and Visarjan rituals.",
+                samagri: ["Silver Nag-Nagin Pair", "Black Til & Mustard Oil", "7 Grain Mix (Satnaj)", "Special Yantra", "Havan Samagri"]
+            },
+            {
+                id: 6,
+                title: "Vivah Sanskar (Vedic Wedding)",
+                category: "wedding",
+                categoryLabel: "Wedding & Samskara",
+                price: 15000,
+                priceNri: 199,
+                duration: "Full Day / Night",
+                icon: "fa-heart",
+                description: "Authentic Vedic Marriage ceremony following Saptapadi, Kanyadaan, and Agni Parikrama rites.",
+                vidhi: "Var Mala, Kanyadaan, Mangalsutra & Sindoor Daan, Saptapadi (7 Pheras), and Laja Homa.",
+                samagri: ["Complete Marriage Havan Kit", "Vedic Mandap Accessories", "Sindoor & Mangalsutra Pujan Kit", "Kusha Grass Ropes"]
+            }
+        ];
+
+        const panditsData = [
+            {
+                name: "Pt. Ramakant Shastri",
+                qualification: "Acharya (BHU Varanasi)",
+                experience: "18+ Years Exp.",
+                languages: "Hindi, Sanskrit, English",
+                rating: 4.9,
+                specialization: "Griha Pravesh & Vastu Expert",
+                avatar: "https://placehold.co/150x150/b45309/ffffff?text=Pt.+Ramakant"
+            },
+            {
+                name: "Vedamurti Venkatesh Bhat",
+                qualification: "Rigveda Pathashala (Sringeri)",
+                experience: "22+ Years Exp.",
+                languages: "Tamil, Telugu, Sanskrit, Hindi",
+                rating: 5.0,
+                specialization: "Rudrabhishekam & South Rituals",
+                avatar: "https://placehold.co/150x150/3d0811/ffffff?text=Pt.+Venkatesh"
+            },
+            {
+                name: "Pt. Anand Joshi",
+                qualification: "Ved Shastri (Pune)",
+                experience: "14+ Years Exp.",
+                languages: "Marathi, Hindi, Gujarati",
+                rating: 4.8,
+                specialization: "Ganesh Pujan & Havan Vidhi",
+                avatar: "https://placehold.co/150x150/d97706/ffffff?text=Pt.+Anand"
+            },
+            {
+                name: "Acharya Suresh Pandey",
+                qualification: "Jyotish Ratna (Sampurnanand Univ)",
+                experience: "16+ Years Exp.",
+                languages: "Hindi, Sanskrit",
+                rating: 4.9,
+                specialization: "Dosha Nivaran & Jaap",
+                avatar: "https://placehold.co/150x150/7c1224/ffffff?text=Acharya+Suresh"
+            }
+        ];
+
+        const muhuratData = {
+            griha: [
+                { date: "Oct 18, 2026", day: "Sunday", tithi: "Shukla Paksha Ekadashi", time: "06:15 AM - 10:45 AM", nakshatra: "Rohini" },
+                { date: "Oct 24, 2026", day: "Saturday", tithi: "Purnima Tithi", time: "08:30 AM - 01:15 PM", nakshatra: "Uttara Bhadrapada" },
+                { date: "Nov 02, 2026", day: "Monday", tithi: "Shukla Paksha Panchami", time: "07:00 AM - 11:30 AM", nakshatra: "Revati" }
+            ],
+            vehicle: [
+                { date: "Oct 15, 2026", day: "Thursday", tithi: "Shukla Paksha Saptami", time: "09:00 AM - 12:00 PM", nakshatra: "Swati" },
+                { date: "Oct 22, 2026", day: "Thursday", tithi: "Trayodashi Tithi", time: "02:00 PM - 05:30 PM", nakshatra: "Anuradha" }
+            ],
+            marriage: [
+                { date: "Nov 12, 2026", day: "Thursday", tithi: "Shukla Paksha Dwitiya", time: "Full Day Subha Lagna", nakshatra: "Mula" },
+                { date: "Nov 18, 2026", day: "Wednesday", tithi: "Shukla Paksha Ashtami", time: "05:00 PM Onwards", nakshatra: "Uttara Ashadha" }
+            ],
+            namakaran: [
+                { date: "Oct 19, 2026", day: "Monday", tithi: "Dwadashi Tithi", time: "08:00 AM - 11:00 AM", nakshatra: "Mrigashirsha" }
+            ],
+            mundan: [
+                { date: "Oct 28, 2026", day: "Wednesday", tithi: "Shukla Paksha Tritiya", time: "07:30 AM - 10:30 AM", nakshatra: "Hasta" }
+            ]
+        };
+
+        const faqsData = [
+            {
+                q: "How are the Pandits verified on PanditJi.com?",
+                a: "All Pandits undergo a multi-tier background check including verification of their Vedic Gurukul education certificates, years of practical experience, and oral Vidhi exams administered by senior Acharyas."
+            },
+            {
+                q: "Is the Puja Samagri (materials) included in the booking?",
+                a: "Yes! When you select our 'Pandit + Samagri Kit' package, we supply 100% pure, pavilion-ready organic samagri (Ghee, Havan herbs, Gangajal, etc.) directly to your home before Panditji arrives."
+            },
+            {
+                q: "How does Virtual Live E-Puja work for devotees abroad?",
+                a: "We schedule a dedicated 1-on-1 Zoom or Google Meet session. Panditji performs the Puja live at our sanctified altar while reciting your specific Name and Gotra in the Sankalp. Prasad is subsequently shipped to your international address."
+            },
+            {
+                q: "What if I need to reschedule or cancel my Puja booking?",
+                a: "Rescheduling is completely free up to 24 hours prior to the event. In case of cancellation, full refunds are processed seamlessly to your original payment method."
+            }
+        ];
+
+        let selectedVenueMode = 'home';
+
+        document.addEventListener("DOMContentLoaded", () => {
+            renderPujas('all');
+            renderPandits();
+            calculateMuhurat();
+            renderFaqs();
+        });
+
+        // Toggle Mobile Menu
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Render Puja Cards
+        function renderPujas(categoryFilter) {
+            const grid = document.getElementById('pujaGrid');
+            grid.innerHTML = '';
+
+            const filtered = categoryFilter === 'all' 
+                ? pujasData 
+                : pujasData.filter(p => p.category === categoryFilter);
+
+            filtered.forEach(puja => {
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-3xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 border border-amber-200/80 flex flex-col justify-between group hover:-translate-y-1 relative";
+                card.innerHTML = `
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div class="w-12 h-12 rounded-2xl bg-saffron-100 text-saffron-700 flex items-center justify-center text-xl group-hover:bg-saffron-600 group-hover:text-white transition duration-300 shadow-sm">
+                                <i class="fa-solid ${puja.icon}"></i>
+                            </div>
+                            <span class="text-[10px] font-bold uppercase tracking-wider bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full">${puja.categoryLabel}</span>
+                        </div>
+
+                        <div>
+                            <h3 class="font-heading text-xl font-bold text-maroon-900 group-hover:text-saffron-600 transition">${puja.title}</h3>
+                            <p class="text-xs text-gray-500 mt-1 line-clamp-2">${puja.description}</p>
+                        </div>
+
+                        <div class="flex items-center space-x-4 text-xs text-gray-600 border-y border-amber-100 py-2.5">
+                            <span><i class="fa-solid fa-clock text-saffron-500 mr-1"></i> ${puja.duration}</span>
+                            <span><i class="fa-solid fa-box text-saffron-500 mr-1"></i> Samagri Kit Option</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 pt-2 flex items-center justify-between">
+                        <div>
+                            <span class="text-[10px] text-gray-400 block font-medium">Starting Dakshina</span>
+                            <span class="font-extrabold text-lg text-maroon-900">₹${puja.price.toLocaleString()} <span class="text-xs text-gray-500 font-normal">($${puja.priceNri})</span></span>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="openDetailsModal(${puja.id})" class="text-xs text-saffron-700 hover:bg-saffron-50 px-3 py-2 rounded-xl border border-saffron-200 font-semibold transition">Details</button>
+                            <button onclick="openBookingModalWithPuja(${puja.id})" class="bg-saffron-600 hover:bg-saffron-700 text-white text-xs font-bold px-4 py-2 rounded-xl shadow transition">Book</button>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Filter Pujas handler
+        function filterPujas(category) {
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.classList.remove('bg-saffron-600', 'text-white', 'shadow-md');
+                btn.classList.add('bg-amber-100', 'text-gray-700');
+            });
+            event.target.classList.remove('bg-amber-100', 'text-gray-700');
+            event.target.classList.add('bg-saffron-600', 'text-white', 'shadow-md');
+            renderPujas(category);
+        }
+
+        // Render Pandits Directory
+        function renderPandits() {
+            const grid = document.getElementById('panditsGrid');
+            grid.innerHTML = '';
+
+            panditsData.forEach(pandit => {
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-3xl p-5 shadow-sm border border-amber-200/80 text-center space-y-3 hover:shadow-md transition";
+                card.innerHTML = `
+                    <img src="${pandit.avatar}" alt="${pandit.name}" class="w-20 h-20 rounded-full mx-auto object-cover border-2 border-saffron-500 p-0.5 shadow">
+                    <div>
+                        <h3 class="font-heading font-bold text-base text-maroon-900">${pandit.name}</h3>
+                        <p class="text-[11px] text-saffron-700 font-semibold">${pandit.qualification}</p>
+                    </div>
+                    <div class="bg-amber-50 rounded-2xl p-2 text-[11px] space-y-1 text-gray-600">
+                        <div><i class="fa-solid fa-award text-amber-500 mr-1"></i> ${pandit.experience}</div>
+                        <div><i class="fa-solid fa-language text-amber-500 mr-1"></i> ${pandit.languages}</div>
+                        <div class="font-bold text-gray-800"><i class="fa-solid fa-star text-amber-400 mr-1"></i> ${pandit.rating} / 5.0</div>
+                    </div>
+                    <button onclick="openBookingModal()" class="w-full bg-amber-100 hover:bg-saffron-600 hover:text-white text-saffron-800 font-bold text-xs py-2 rounded-xl transition">Request Pandit</button>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Calculate Muhurat Output
+        function calculateMuhurat() {
+            const occasion = document.getElementById('muhuratOccasion').value;
+            const resultsContainer = document.getElementById('muhuratResults');
+            resultsContainer.innerHTML = '';
+
+            const list = muhuratData[occasion] || muhuratData.griha;
+
+            list.forEach(m => {
+                const item = document.createElement('div');
+                item.className = "bg-amber-50/70 border border-amber-200 rounded-2xl p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3";
+                item.innerHTML = `
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="font-bold text-sm text-maroon-900">${m.date} (${m.day})</span>
+                            <span class="bg-saffron-200 text-saffron-900 text-[10px] font-bold px-2 py-0.5 rounded">${m.nakshatra} Nakshatra</span>
+                        </div>
+                        <p class="text-xs text-gray-600 mt-0.5">${m.tithi} • <span class="font-semibold text-gray-800">Timing: ${m.time}</span></p>
+                    </div>
+                    <button onclick="openBookingModal()" class="bg-saffron-600 text-white font-bold text-xs px-4 py-2 rounded-xl hover:bg-saffron-700 transition">Book for This Muhurat</button>
+                `;
+                resultsContainer.appendChild(item);
+            });
+        }
+
+        function renderFaqs() {
+            const container = document.getElementById('faqAccordion');
+            container.innerHTML = '';
+
+            faqsData.forEach((faq, index) => {
+                const item = document.createElement('div');
+                item.className = "bg-white border border-amber-200 rounded-2xl overflow-hidden shadow-sm";
+                item.innerHTML = `
+                    <button onclick="toggleFaq(${index})" class="w-full text-left p-4 font-bold text-sm text-maroon-900 flex justify-between items-center focus:outline-none">
+                        <span>${faq.q}</span>
+                        <i class="fa-solid fa-chevron-down text-saffron-600 transition-transform duration-200" id="faqIcon-${index}"></i>
+                    </button>
+                    <div id="faqAns-${index}" class="hidden p-4 pt-0 text-xs text-gray-600 border-t border-amber-100/60 leading-relaxed">
+                        ${faq.a}
+                    </div>
+                `;
+                container.appendChild(item);
+            });
+        }
+
+        function toggleFaq(index) {
+            const ans = document.getElementById(`faqAns-${index}`);
+            const icon = document.getElementById(`faqIcon-${index}`);
+            ans.classList.toggle('hidden');
+            icon.classList.toggle('rotate-180');
+        }
+
+        function openBookingModal(mode = 'home') {
+            document.getElementById('bookingModal').classList.remove('hidden');
+            if (mode === 'virtual') {
+                setVenueMode('online');
+            }
+            nextWizardStep(1);
+        }
+
+        function openBookingModalWithPuja(pujaId) {
+            openBookingModal();
+            document.getElementById('bookPujaSelect').value = pujaId;
+        }
+
+        function closeBookingModal() {
+            document.getElementById('bookingModal').classList.add('hidden');
+        }
+
+        function openDetailsModal(pujaId) {
+            const puja = pujasData.find(p => p.id === pujaId);
+            if (!puja) return;
+
+            document.getElementById('detailModalTitle').innerText = puja.title;
+            document.getElementById('detailModalCategory').innerText = puja.categoryLabel;
+            document.getElementById('detailModalDesc').innerText = puja.description;
+            document.getElementById('detailModalVidhi').innerText = puja.vidhi;
+            document.getElementById('detailModalPrice').innerText = `₹${puja.price.toLocaleString()} ($${puja.priceNri})`;
+
+            const samagriList = document.getElementById('detailModalSamagri');
+            samagriList.innerHTML = '';
+            puja.samagri.forEach(item => {
+                const li = document.createElement('li');
+                li.innerText = item;
+                samagriList.appendChild(li);
+            });
+
+            const bookBtn = document.getElementById('detailModalBookBtn');
+            bookBtn.onclick = () => {
+                closeDetailsModal();
+                openBookingModalWithPuja(pujaId);
+            };
+
+            document.getElementById('detailsModal').classList.remove('hidden');
+        }
+
+        function closeDetailsModal() {
+            document.getElementById('detailsModal').classList.add('hidden');
+        }
+
+        // Switch venue mode
+        function setVenueMode(mode) {
+            selectedVenueMode = mode;
+            const btnHome = document.getElementById('btnVenueHome');
+            const btnOnline = document.getElementById('btnVenueOnline');
+
+            if (mode === 'home') {
+                btnHome.className = "py-2.5 px-3 rounded-xl border-2 border-saffron-500 bg-amber-50 text-xs font-bold text-maroon-900 flex items-center justify-center gap-2";
+                btnOnline.className = "py-2.5 px-3 rounded-xl border border-gray-300 text-xs font-bold text-gray-600 flex items-center justify-center gap-2";
+            } else {
+                btnOnline.className = "py-2.5 px-3 rounded-xl border-2 border-saffron-500 bg-amber-50 text-xs font-bold text-maroon-900 flex items-center justify-center gap-2";
+                btnHome.className = "py-2.5 px-3 rounded-xl border border-gray-300 text-xs font-bold text-gray-600 flex items-center justify-center gap-2";
+            }
+        }
+
+        // Wizard Steps
+        function nextWizardStep(stepNumber) {
+            document.querySelectorAll('.wizard-step').forEach(el => el.classList.add('hidden'));
+            document.getElementById(`wizardStep${stepNumber}`).classList.remove('hidden');
+
+            // Update indicators
+            for (let i = 1; i <= 4; i++) {
+                const ind = document.getElementById(`step${i}Indicator`);
+                if (i <= stepNumber) {
+                    ind.className = "text-saffron-600 font-bold";
+                } else {
+                    ind.className = "text-gray-400";
+                }
+            }
+        }
+
+        // Form Submit Handler
+        function handleBookingSubmit(event) {
+            event.preventDefault();
+            
+            const selectedPujaId = document.getElementById('bookPujaSelect').value;
+            const pujaObj = pujasData.find(p => p.id == selectedPujaId);
+            const devoteeName = document.getElementById('devoteeName').value;
+            const devoteePhone = document.getElementById('devoteePhone').value;
+            const date = document.getElementById('bookDate').value;
+            const refId = 'PJ-' + Math.floor(10000 + Math.random() * 90000);
+
+            document.getElementById('invRef').innerText = refId;
+            document.getElementById('invPuja').innerText = pujaObj ? pujaObj.title : 'Vedic Puja';
+            document.getElementById('invDate').innerText = date || 'As Scheduled';
+            document.getElementById('invName').innerText = devoteeName;
+
+            // Prepare WhatsApp confirmation link
+            const whatsappMsg = `Namaste PanditJi.com, I have booked a Puja!%0A*Ref ID:* ${refId}%0A*Name:* ${devoteeName}%0A*Puja:* ${pujaObj ? pujaObj.title : 'Puja'}%0A*Date:* ${date}`;
+            document.getElementById('whatappConfirmLink').href = `https://wa.me/919876543210?text=${whatsappMsg}`;
+
+            nextWizardStep(4);
+        }
+
+        function handleQuickSearch(e) {
+            e.preventDefault();
+            openBookingModal();
+        }
+
+        function changeLanguage(lang) {
+            // Simulated language indicator toast
+            const toast = document.createElement('div');
+            toast.className = "fixed top-20 right-4 z-50 bg-maroon-900 text-amber-100 text-xs py-2 px-4 rounded-xl shadow-xl border border-amber-300";
+            toast.innerText = `Language updated to: ${lang.toUpperCase()}`;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 2500);
+        }
+    </script>
+</body>
+</html>
